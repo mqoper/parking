@@ -8,9 +8,9 @@
 
 
   10.times do |i|
-    Spot.create(name: "A #{i}", reserved: false)
+    Spot.create(name: "A#{i}", reserved: false)
   end
 
   10.times do |i|
-    Spot.create(name: "B #{i}", reserved: false)
+    Spot.create(name: "B#{i}", reserved: false)
   end
