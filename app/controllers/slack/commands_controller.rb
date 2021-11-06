@@ -6,9 +6,21 @@ class Slack::CommandsController < ApplicationController
   before_action :verify_slack_request
 
   def create
-    json = { text: "You reserved spot #{params[:text]}"}
+    spot = Spot.find_by(name: "#{params[:text]}")
+    if(!spot)
+      json = {text: "Given spot doesn't exist"}
+    elsif (spot.reserved == true)
+      json = {text: "Spot #{spot.name} is currently reserved"}
+    else
+      spot.reserved = true
+      spot.save
+      json = {text: "You reserved spot #{spot.name}"}
+    end
 
     render json: json
+
+    # @spot.id(:text).save
+
   end
 
   private
