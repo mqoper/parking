@@ -4,4 +4,8 @@ class PagesController < ApplicationController
 
   def about
   end
+
+  def history
+    @History = History.all
+  end
 end
