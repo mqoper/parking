@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @histories = @user.histories.paginate(page: params[:page], per_page: 5)
   end
 
   def create
