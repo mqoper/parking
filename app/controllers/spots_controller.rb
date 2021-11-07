@@ -1,5 +1,5 @@
 class SpotsController < ApplicationController
-  before_action :set_spot, only: %i[ show edit update destroy ]
+  before_action :set_spot, only: %i[show edit update destroy]
 
   # GET /spots or /spots.json
   def index
@@ -25,7 +25,7 @@ class SpotsController < ApplicationController
 
     respond_to do |format|
       if @spot.save
-        format.html { redirect_to @spot, notice: "Spot was successfully created." }
+        format.html { redirect_to @spot, notice: 'Spot was successfully created.' }
         format.json { render :show, status: :created, location: @spot }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class SpotsController < ApplicationController
   def update
     respond_to do |format|
       if @spot.update(spot_params)
-        format.html { redirect_to @spot, notice: "Spot was successfully updated." }
+        format.html { redirect_to @spot, notice: 'Spot was successfully updated.' }
         format.json { render :show, status: :ok, location: @spot }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -51,19 +51,21 @@ class SpotsController < ApplicationController
   def destroy
     @spot.destroy
     respond_to do |format|
-      format.html { redirect_to spots_url, notice: "Spot was successfully destroyed." }
+      format.html { redirect_to spots_url, notice: 'Spot was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_spot
-      @spot = Spot.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def spot_params
-      params.require(:spot).permit(:name, :reserved)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_spot
+    @spot = Spot.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def spot_params
+    params.require(:spot).permit(:name, :reserved)
+  end
+
 end
