@@ -1,6 +1,8 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Parking spot history</h1>
+
+<div class="flickr_pagination">
+  <%= will_paginate @histories, :container => false %>
+</div>
 
 <table>
   <thead>
@@ -11,11 +13,15 @@
   </thead>
 
   <tbody>
-  <% @History.each do |history| %>
+  <% @histories.each do |history| %>
     <tr>
-      <td><%= history.user.username if history.user %></td>
       <td><%= history.spot.name %></td>
+      <td><%= history.user.username if history.user %></td>
     </tr>
   <% end %>
   </tbody>
 </table>
+
+<div class="flickr_pagination">
+  <%= will_paginate @histories, :container => false %>
+</div>

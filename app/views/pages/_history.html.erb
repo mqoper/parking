@@ -2,14 +2,12 @@
   <thead>
   <tr>
     <th>Spot name</th>
-    <th>User</th>
   </tr>
   </thead>
 
   <tbody>
   <% @histories.each do |history| %>
     <tr>
-      <td><%= history.user.username if history.user %></td>
       <td><%= history.spot.name %></td>
     </tr>
   <% end %>

@@ -6,6 +6,6 @@ class PagesController < ApplicationController
   end
 
   def history
-    @History = History.all
+    @histories = History.all.paginate(page: params[:page], per_page: 10)
   end
 end

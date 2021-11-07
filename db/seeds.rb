@@ -16,9 +16,13 @@ end
 end
 
 5.times do |i|
-  User.create(username: "User#{i}")
+  User.create(username: "User#{i}", email: "User#{i}@test.pl", password: 'testpassword', slack_id: "XDSDS34")
 end
 
 5.times do |i|
   History.create(spot_id: i, user_id: i)
+end
+
+15.times do |i|
+  History.create(spot_id: i, user_id: 1)
 end
