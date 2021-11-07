@@ -7,10 +7,18 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-  10.times do |i|
-    Spot.create(name: "A#{i}", reserved: false)
-  end
+10.times do |i|
+  Spot.create(name: "A#{i}", reserved: false)
+end
 
-  10.times do |i|
-    Spot.create(name: "B#{i}", reserved: false)
-  end
+10.times do |i|
+  Spot.create(name: "B#{i}", reserved: false)
+end
+
+5.times do |i|
+  User.create(username: "User#{i}")
+end
+
+5.times do |i|
+  History.create(spot_id: i, user_id: i)
+end
