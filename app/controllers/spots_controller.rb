@@ -4,6 +4,7 @@ class SpotsController < ApplicationController
   # GET /spots or /spots.json
   def index
     @spots = Spot.all
+    @users = User.all
   end
 
   # GET /spots/1 or /spots/1.json
@@ -36,9 +37,31 @@ class SpotsController < ApplicationController
 
   # PATCH/PUT /spots/1 or /spots/1.json
   def update
+
+    # if @spot.update(spot_params) == true
+    # @history = History.new
+    # @history = current_user
+    # if @history.save
+    #   flash[:notice] = "Parking spot has been reserved by"
+    # end
+    # end
+    #
+    #
+    # @user = User.find(params[:id])
+    if (set_spot.reserved != true)
+      spot = set_spot        # Search a spot in database by id
+      user = current_user
+      history = History.new(user_id: user.id, spot_id: spot.id)
+      history.save
+      if history.save
+        flash[:notice] = "User #{user.username} reserved spot #{spot.name}"
+      end
+      # byebug
+    end
+
     respond_to do |format|
       if @spot.update(spot_params)
-        format.html { redirect_to @spot, notice: 'Spot was successfully updated.' }
+        format.html { redirect_to @spot , notice: 'Spot was successfully updated.'}
         format.json { render :show, status: :ok, location: @spot }
       else
         format.html { render :edit, status: :unprocessable_entity }

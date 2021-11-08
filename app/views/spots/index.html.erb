@@ -14,11 +14,15 @@
   <tbody>
     <% @spots.each do |spot| %>
       <tr>
+
         <td><%= spot.name %></td>
         <td><%= spot.reserved %></td>
         <td><%= link_to 'Show', spot %></td>
-        <td><%= link_to 'Edit', edit_spot_path(spot) %></td>
-        <td><%= link_to 'Destroy', spot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if logged_in? &&  spot.reserved == true%>
+<!--          spot.histories == current_user-->
+          <td><%= link_to 'Edit', edit_spot_path(spot) %></td>
+          <td><%= link_to 'Destroy', spot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
