@@ -16,7 +16,7 @@
   <% @histories.each do |history| %>
     <tr>
       <td><%= history.spot.name %></td>
-      <td><%= history.user.username if history.user %></td>
+      <td><%= history.user.full_name if history.user %></td>
     </tr>
   <% end %>
   </tbody>

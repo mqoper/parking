@@ -19,7 +19,7 @@ class Slack::CommandsController < ApplicationController
       if !user.nil?
         history = History.new(user_id: user.id, spot_id: spot.id)
         history.save
-        json = { text: "User #{user.username} reserved spot #{spot.name}" }
+        json = { text: "User #{user.full_name} reserved spot #{spot.name}" }
       else
         # history = History.new(user_id: 1, spot_id: spot.id)
         # history.save
