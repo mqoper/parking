@@ -1,21 +1,35 @@
 class SpotsController < ApplicationController
-  before_action :set_spot, only: [:show, :edit, :update, :destroy]
-  before_action :require_user, except: [:show, :index]
+  before_action :set_spot, only: [:update, :destroy]
+  before_action :require_user, except: [:index]
+  # before_action :require_same_user, only: [:update]
   # before_action :require_same_user, only: [:edit, :update, :destroy]
+
+
+  def free
+    spot = Spot.find(params[:format])
+    spot.reserved = false
+    spot.save
+    redirect_to spots_url
+  end
+
+  def book
+    spot = Spot.find(params[:format])
+    spot.reserved = true
+    spot.save
+    history = History.new(user_id: current_user.id, spot_id: spot.id)
+    history.save
+    # byebug
+    redirect_to spots_url
+  end
 
   def index
     @spots = Spot.all
     @users = User.all
-  end
-
-  def show
+    @history = History.all
   end
 
   def new
     @spot = Spot.new
-  end
-
-  def edit
   end
 
   def create
@@ -30,24 +44,13 @@ class SpotsController < ApplicationController
   end
 
   def update
-
-    # if @spot.update(spot_params) == true
-    # @history = History.new
-    # @history = current_user
-    # if @history.save
-    #   flash[:notice] = "Parking spot has been reserved by"
-    # end
-    # end
-    #
-    #
-    # @user = User.find(params[:id])
     if (set_spot.reserved != true)
       spot = set_spot        # Search a spot in database by id
       user = current_user
       history = History.new(user_id: user.id, spot_id: spot.id)
       history.save
       if history.save
-        flash[:notice] = "User #{user.username} reserved spot #{spot.name}"
+        flash[:notice] = "User #{user.full_name} reserved spot #{spot.name}"
       end
       # byebug
     end

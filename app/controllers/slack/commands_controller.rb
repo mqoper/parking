@@ -21,9 +21,28 @@ class Slack::CommandsController < ApplicationController
         history.save
         json = { text: "User #{user.full_name} reserved spot #{spot.name}" }
       else
-        # history = History.new(user_id: 1, spot_id: spot.id)
-        # history.save
-        json = { text: "You reserved spot #{spot.name}" }
+        history = History.new(user_id: 0, spot_id: spot.id)
+        history.save
+        json = { text: "Unverified user reserved spot #{spot.name}" }
+      end
+    end
+
+    render json: json
+  end
+
+  def register
+    user = User.find_by(slack_register_id: params[:text].to_s)
+    check = User.find_by(slack_id: params[:user_id])
+    if !user
+      json = { text: "This code doesn't exist in the database" }
+    else
+      # byebug
+      if !check.nil?
+        json = { text: 'This account is already registered' }
+      else
+        user.slack_id = params[:user_id]
+        user.save
+        json = { text: "The account has been registered with #{user.full_name}" }
       end
     end
 

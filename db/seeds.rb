@@ -15,11 +15,17 @@ end
   Spot.create(name: "B#{i}", reserved: false)
 end
 
-5.times do |i|
-  User.create(full_name: "User#{i}", email: "User#{i}@test.pl", password: '1qaz', slack_id: "XDSDS33")
+User.create(full_name: 'unverified user', email: 'unverifed@test.pl', password: 'zaq1',
+            slack_register_id: "#{(0...6).map { (65 + rand(26)).chr }.join}", slack_id: 'xxxx', id: 0)
+
+User.create(full_name: 'Marcin Koper', email: 'marcin.koper@test.pl', password: 'zaq1',
+            slack_register_id: "#{(0...6).map { (65 + rand(26)).chr }.join}", slack_id: 'xxxy')
+
+3.times do |i|
+  User.create(full_name: "User#{i}", email: "user#{i}@test.pl", password: 'zaq1',
+              slack_register_id: "#{(0...6).map { (65 + rand(26)).chr }.join}", slack_id: "xxx#{i}" )
 end
 
-User.create(full_name: "Marcin Koper", email: "marcin.koper@test.pl", password: 'zaq1', slack_id: "U02KZPRKJ95")
 
 # 5.times do |i|
 #   History.create(spot_id: i, user_id: i)

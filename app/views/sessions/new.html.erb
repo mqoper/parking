@@ -22,6 +22,15 @@
         <div class="form-group row justify-content-center">
           <%= f.submit "Log in", class: "btn btn-outline-light btn-lg" %>
         </div>
+
+        <div class="mb-3">
+          <%= link_to 'Sign up', signup_path, class: "text-info" %>
+        </div>
+
+        <p>Or sign with</p>
+
+        <%= render 'slack' %>
+
       <% end %>
     </div>
     <div class="mb-3">

@@ -10,5 +10,10 @@ class User < ApplicationRecord
             uniqueness: { case_sensitive: false },
             length: { maximum: 105 },
             format: { with: VALID_EMAIL_REGEX }
+  validates :slack_register_id, presence: true,
+            uniqueness: { case_sensitive: false },
+            length: { minimum: 6, maximum: 6 }
+  validates :slack_id, presence: true,
+            uniqueness: { case_sensitive: false }
   has_secure_password
 end

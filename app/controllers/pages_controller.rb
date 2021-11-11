@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+
   def home
     redirect_to pages_history_path if logged_in?
     @current_user = current_user
@@ -8,7 +9,7 @@ class PagesController < ApplicationController
   end
 
   def history
-    @histories = History.all.paginate(page: params[:page], per_page: 10)
+    @histories = History.all.paginate(page: params[:page], per_page: 20)
     @spots = Spot.all
     @spot = @histories.distinct.pluck(:spot_id)
   end
@@ -24,4 +25,7 @@ class PagesController < ApplicationController
   # def history_params
   #   params.require(:history).permit(:user_id, :spot_id)
   # end
+  #
+
+
 end

@@ -17,6 +17,9 @@
     <tr>
       <td><%= history.spot.name %></td>
       <td><%= history.user.full_name if history.user %></td>
+      <% if history.spot.reserved == true %>
+        <td><%= link_to 'Edit', edit_spot_path(history.spot) if history.user[:full_name] == 'Unverified user' %></td>
+      <% end %>
     </tr>
   <% end %>
   </tbody>

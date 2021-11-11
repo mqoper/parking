@@ -6,10 +6,8 @@
   </thead>
 
   <tbody>
-  <% spot = @histories.distinct.pluck(:spot_id) %>
   <% @histories.each do |history| %>
     <% if history.spot.reserved == true %>
-<!--      && spot[1] == history.spot_id-->
       <tr>
         <td><%= history.spot.name %></td>
         <td><%= link_to 'Edit', edit_spot_path(history.spot) %></td>

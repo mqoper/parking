@@ -12,14 +12,14 @@ class UsersController < ApplicationController
   end
 
   def show
-    @histories = @user.histories.paginate(page: params[:page], per_page: 10)
+    @histories = @user.histories.paginate(page: params[:page], per_page: 20)
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id    #autologin after registration
-      flash[:notice] = "Welcome to the Parking spot application #{@user.username}"
+      flash[:notice] = "Welcome to the Parking spot application #{@user.full_name}"
       redirect_to root_path
     else
       render 'new'
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :password)
+    params.require(:user).permit(:full_name, :email, :password, :slack_register_id)
   end
 
   def set_user
@@ -57,7 +57,6 @@ class UsersController < ApplicationController
 
   def require_same_user
     if current_user != @user
-      # && !current_user.admin?
       flash[:alert] = "You can only edit, show or delete your own account"
       redirect_to users_path
     end

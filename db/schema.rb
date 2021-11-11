@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2021_11_07_173743) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
     t.string "email"
+    t.string "slack_register_id"
     t.string "slack_id"
   end
 
