@@ -4,22 +4,24 @@
   <%= will_paginate @histories, :container => false %>
 </div>
 
-<table>
+<table class="table">
   <thead>
-  <tr>
-    <th>Spot name</th>
-    <th>User</th>
-  </tr>
+    <tr>
+      <th scope="col">Spot name</th>
+      <th scope="col">Reserved by</th>
+      <th scope="col">Reserved at</th>
+    </tr>
   </thead>
 
   <tbody>
   <% @histories.each do |history| %>
     <tr>
-      <td><%= history.spot.name %></td>
+      <th scope="col"><%= history.spot.name %></th>
       <td><%= history.user.full_name if history.user %></td>
-      <% if history.spot.reserved == true %>
-        <td><%= link_to 'Edit', edit_spot_path(history.spot) if history.user[:full_name] == 'Unverified user' %></td>
-      <% end %>
+      <%# if history.spot.reserved == true && history.user[:full_name] == 'Unverified user' %>
+<!--        <td><%#= link_to 'Edit', edit_spot_path(history.spot) %></td>-->
+      <%# end %>
+      <td><%= history.updated_at.in_time_zone('Warsaw').to_time.to_formatted_s :long_ordinal if history.user %></td>
     </tr>
   <% end %>
   </tbody>

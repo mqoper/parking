@@ -9,7 +9,7 @@ class PagesController < ApplicationController
   end
 
   def history
-    @histories = History.all.paginate(page: params[:page], per_page: 20)
+    @histories = History.all.paginate(page: params[:page], per_page: 20).order('id DESC')
     @spots = Spot.all
     @spot = @histories.distinct.pluck(:spot_id)
   end

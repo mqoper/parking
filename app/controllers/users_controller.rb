@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id    #autologin after registration
       flash[:notice] = "Welcome to the Parking spot application #{@user.full_name}"
-      redirect_to root_path
+      redirect_to pages_about_path
     else
       render 'new'
     end
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       flash[:notice] = "Your account information was successfully updated"
-      redirect_to root_path
+      redirect_to spots_path
     else
       render 'edit'
     end

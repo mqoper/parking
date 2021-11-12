@@ -1,0 +1,53 @@
+@import 'bootstrap/dist/css/bootstrap';
+
+body {
+  background-color: aliceblue;
+}
+
+.nav-link {
+  color: white !important;
+}
+
+.nav-link:hover {
+  color: white;
+  background-color: #212529;
+}
+
+#logo {
+  float: left;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  font-weight: bold;
+}
+
+#home-container{
+  margin-top: 25px;
+}
+
+.jumbotron {
+  background-image: asset-url('jumbo-back.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 425px;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+#page-content {
+  flex: 1 0 auto;
+  background-color: aliceblue;
+}
+
+button.close {
+  webkit-appearance:none;
+  padding:0;
+  cursor:pointer;
+  background:0;
+  border:0
+}
