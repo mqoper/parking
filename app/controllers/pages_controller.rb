@@ -9,23 +9,7 @@ class PagesController < ApplicationController
   end
 
   def history
-    @histories = History.all.paginate(page: params[:page], per_page: 20).order('id DESC')
-    @spots = Spot.all
-    @spot = @histories.distinct.pluck(:spot_id)
+    @histories = History.all.paginate(page: params[:page], per_page: 20).order(id: :desc)
   end
-
-  # def create
-  #   @history = History.new(history_params)
-  #   @history = current_user
-  #   if @history.save
-  #     flash[:notice] = "Parking spot has been reserved by"
-  #   end
-  # end
-  #
-  # def history_params
-  #   params.require(:history).permit(:user_id, :spot_id)
-  # end
-  #
-
 
 end

@@ -52,7 +52,6 @@
     <orderEntry type="library" scope="PROVIDED" name="ffi (v1.15.4, Remote-rbenv: ruby-3.0.2-p107) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v0.5.2, Remote-rbenv: ruby-3.0.2-p107) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v1.8.11, Remote-rbenv: ruby-3.0.2-p107) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="jbuilder (v2.11.2, Remote-rbenv: ruby-3.0.2-p107) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="listen (v3.7.0, Remote-rbenv: ruby-3.0.2-p107) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="loofah (v2.12.0, Remote-rbenv: ruby-3.0.2-p107) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mail (v2.7.1, Remote-rbenv: ruby-3.0.2-p107) [gem]" level="application" />
@@ -90,7 +89,6 @@
     <orderEntry type="library" scope="PROVIDED" name="semantic_range (v3.0.0, Remote-rbenv: ruby-3.0.2-p107) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="spring (v3.0.0, Remote-rbenv: ruby-3.0.2-p107) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets (v4.0.2, Remote-rbenv: ruby-3.0.2-p107) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="sprockets-rails (v3.2.2, Remote-rbenv: ruby-3.0.2-p107) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="thor (v1.1.0, Remote-rbenv: ruby-3.0.2-p107) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tilt (v2.0.10, Remote-rbenv: ruby-3.0.2-p107) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="turbolinks (v5.2.1, Remote-rbenv: ruby-3.0.2-p107) [gem]" level="application" />
