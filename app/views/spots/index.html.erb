@@ -19,7 +19,7 @@
           <td><%= button_to 'Book it', book_path(spot), class: "btn btn-success btn-sm d-grid gap-2"  %></td>
 <!--      <td><%#= link_to 'Destroy', spot, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
         <% elsif logged_in? && spot.reserved == true && current_user.id == who || @users.find(who).id == 0 %>
-          <td><%= button_to 'Delete reservations', free_path(spot), class: "btn btn-danger btn-sm d-grid gap-2"  %></td>
+          <td><%= button_to 'Delete reservation', free_path(spot), class: "btn btn-danger btn-sm d-grid gap-2"  %></td>
         <% else %>
           <th></th>
         <% end %>
