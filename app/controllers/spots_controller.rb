@@ -23,7 +23,7 @@ class SpotsController < ApplicationController
   end
 
   def index
-    @spots = Spot.all
+    @spots = Spot.all.order(id: :asc)
     @users = User.all
     @history = History.all
   end
