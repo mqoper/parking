@@ -49,6 +49,18 @@ class Slack::CommandsController < ApplicationController
     render json: json
   end
 
+  def show
+    spot = Spot.where(reserved: true).order(id: :asc)
+    histories = History.all
+    users = User.all
+    message = "Reserved spots: \n"
+    spot.each do |i|
+      last_reserved = histories.where(spot_id: i.id).last.user_id
+      message += " #{i.name} by #{users.find(last_reserved).full_name} \n"
+    end
+    render json: message
+  end
+
   private
 
   def verify_slack_request

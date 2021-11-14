@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :spots
-  root 'pages#home'
+  root 'pages#about'
   get 'pages/about'
   get 'pages/history'
   get 'signup', to: 'users#new'
@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   post '/slack/command', to: 'slack/commands#create'
   post '/slack/register', to: 'slack/commands#register'
+  post '/slack/show', to: 'slack/commands#show'
 
   post '/auth/slack/callback', to: 'omniauth_callbacks#slack'
 
